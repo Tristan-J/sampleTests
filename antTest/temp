@@ -1,0 +1,21 @@
+Buildfile: /home/tristan/workspace/test/antTest/build.xml
+
+clean:
+   [delete] Deleting directory /home/tristan/workspace/test/antTest/build
+
+compile:
+    [mkdir] Created dir: /home/tristan/workspace/test/antTest/build/classes
+    [javac] Compiling 2 source files to /home/tristan/workspace/test/antTest/build/classes
+
+jar:
+    [mkdir] Created dir: /home/tristan/workspace/test/antTest/build/jar
+      [jar] Building jar: /home/tristan/workspace/test/antTest/build/jar/HelloAnt.jar
+
+run:
+     [java] hello ant
+     [java] {"name":"tristan","properties":{"a":"a","b":"b"}}
+
+main:
+
+BUILD SUCCESSFUL
+Total time: 2 seconds

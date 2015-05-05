@@ -15,4 +15,15 @@ public class HelloAnt {
             System.out.println(e);
 		}
 	}
+
+	public static void jsonTry() {
+		String dataString = "{\"name\":\"tristan\",\"properties\":{\"a\":\"a\",\"b\":\"b\"}}";
+
+		try {
+            JSONObject dataJson = new JSONObject(dataString);
+            System.out.println(dataJson.toString());
+		} catch (JSONException e) {
+            System.out.println(e);
+		}
+	}
 }

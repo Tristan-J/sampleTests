@@ -6,11 +6,13 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
     <property name="main-class"  value="tsp.HelloAnt"/>
-
     <property name="lib.dir" value="lib" />
+
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar" />
     </path>
+
+    <path id="application" location="${jar.dir}/${ant.project.name}.jar" />
 
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -30,19 +32,32 @@
         </jar>
     </target>
 
-    <target name="run" depends="jar">
-        <!-- <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/> -->
+<!--     <target name="run" depends="jar">
         <java fork="true" classname="${main-class}">
             <classpath>
                 <path refid="classpath" />
+                <path refid="application" />
                 <path location="${jar.dir}/${ant.project.name}.jar" />
             </classpath>
         </java>
+    </target> -->
+
+    <target name="junit" depends="jar">
+        <junit printsummary="yes">
+            <classpath>
+                <path refid="classpath"/>
+                <path refid="application"/>
+            </classpath>
+            <batchtest fork="yes">
+                <fileset dir="${src.dir}" includes="*Test.java"/>
+            </batchtest>
+        </junit>
     </target>
 
     <target name="clean-build" depends="clean,jar"/>
 
-    <target name="main" depends="clean,run"/>
+    <!-- <target name="main" depends="clean,run"/> -->
+    <target name="main" depends="clean,junit"/>
 
 </project>
 
